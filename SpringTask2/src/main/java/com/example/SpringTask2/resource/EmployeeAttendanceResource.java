@@ -1,33 +1,21 @@
-package com.example.SpringTask2.entity;
+package com.example.SpringTask2.resource;
 
 import com.example.SpringTask2.dictionary.EmployeeAttendanceStatus;
+import com.example.SpringTask2.entity.Employee;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-//mark class as an Entity
 
-@Entity
-//defining class name as Table name
-@Table(name = "EMPLOYEE_ATTENDANCE")
-public class EmployeeAttendance {
-    //Defining emaId id as primary key
+public class EmployeeAttendanceResource {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "EMA_ID")
     private Long emaId;
-    @Column(name = "EMA_ATTENDANCE_STATUS")
-    @Enumerated(EnumType.ORDINAL)
     private EmployeeAttendanceStatus employeeAttendanceStatus;
-
-    @Column(name = "EMA_CURRENT_DATE")
     private LocalDate emaCurrentDate;
-    @Column(name = "EMA_MONTH")
     private String emaMonth;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "EMP_ID", referencedColumnName = "EMP_EMPLOYEE_ID")
     private Employee employee;
 
-    public EmployeeAttendance(Long emaId, EmployeeAttendanceStatus employeeAttendanceStatus, LocalDate emaCurrentDate, String emaMonth, Employee employee) {
+    public EmployeeAttendanceResource(Long emaId, EmployeeAttendanceStatus employeeAttendanceStatus, LocalDate emaCurrentDate, String emaMonth, Employee employee) {
         this.emaId = emaId;
         this.employeeAttendanceStatus = employeeAttendanceStatus;
         this.emaCurrentDate = emaCurrentDate;
@@ -35,7 +23,7 @@ public class EmployeeAttendance {
         this.employee = employee;
     }
 
-    public EmployeeAttendance() {
+    public EmployeeAttendanceResource() {
     }
 
     public Long getEmaId() {

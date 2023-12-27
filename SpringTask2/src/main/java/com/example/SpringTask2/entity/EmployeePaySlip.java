@@ -1,16 +1,17 @@
 package com.example.SpringTask2.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
+//mark class as an Entity
 @Entity
-@Table(name="EMPLOYEE_PAYSLIP")
+//defining class name as Table name
+@Table(name = "EMPLOYEE_PAYSLIP")
 
 public class EmployeePaySlip {
+    //Defining epsPayslipId id as primary key
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EPS_PAYSLIP_ID")
     private Long epsPayslipId;
 
@@ -23,6 +24,9 @@ public class EmployeePaySlip {
 
     @Column(name = "EPS_BASIC_SALARY")
     private double epsBasicSalary;
+//    @OneToOne
+//    @JoinColumn(name = "employee_id")
+//    private Employee employee;
 
     public EmployeePaySlip(Long epsPayslipId, LocalDate epsCreatedDate, long epsDaysPresent, double epsDailySalary, double epsBasicSalary) {
         this.epsPayslipId = epsPayslipId;
@@ -30,6 +34,7 @@ public class EmployeePaySlip {
         this.epsDaysPresent = epsDaysPresent;
         this.epsDailySalary = epsDailySalary;
         this.epsBasicSalary = epsBasicSalary;
+
     }
 
     public EmployeePaySlip() {
@@ -74,4 +79,6 @@ public class EmployeePaySlip {
     public void setEpsBasicSalary(double epsBasicSalary) {
         this.epsBasicSalary = epsBasicSalary;
     }
+
+
 }
