@@ -22,9 +22,9 @@ public class EmployeeAttendanceController {
     private EmployeeAttendanceService employeeAttendanceService;
 
     //build Create user REST API
-    @PostMapping("/save")
-    public ResponseEntity<EmployeeAttendance> addEmployeeAttendance(@RequestBody EmployeeAttendance employeeAttendance) {
-        EmployeeAttendance employeeAttendance1 = employeeAttendanceService.createEmployeeAttendance(employeeAttendance);
+    @PostMapping("/save/{id}")
+    public ResponseEntity<EmployeeAttendance> addEmployeeAttendance(@PathVariable Long id, @RequestBody EmployeeAttendance employeeAttendance) {
+        EmployeeAttendance employeeAttendance1 = employeeAttendanceService.createEmployeeAttendance(id, employeeAttendance);
         return new ResponseEntity<>(employeeAttendance1, HttpStatus.CREATED);
     }
 

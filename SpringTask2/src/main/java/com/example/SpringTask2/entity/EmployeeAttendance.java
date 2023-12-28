@@ -1,6 +1,7 @@
 package com.example.SpringTask2.entity;
 
 import com.example.SpringTask2.dictionary.EmployeeAttendanceStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -10,21 +11,26 @@ import java.time.LocalDate;
 //defining class name as Table name
 @Table(name = "EMPLOYEE_ATTENDANCE")
 public class EmployeeAttendance {
+
     //Defining emaId id as primary key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EMA_ID")
     private Long emaId;
+
     @Column(name = "EMA_ATTENDANCE_STATUS")
     @Enumerated(EnumType.ORDINAL)
     private EmployeeAttendanceStatus employeeAttendanceStatus;
 
     @Column(name = "EMA_CURRENT_DATE")
     private LocalDate emaCurrentDate;
+
     @Column(name = "EMA_MONTH")
     private String emaMonth;
+
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "EMP_ID", referencedColumnName = "EMP_EMPLOYEE_ID")
+    @JoinColumn(name = "EMP_ID")
+    @JsonIgnore
     private Employee employee;
 
     public EmployeeAttendance(Long emaId, EmployeeAttendanceStatus employeeAttendanceStatus, LocalDate emaCurrentDate, String emaMonth, Employee employee) {

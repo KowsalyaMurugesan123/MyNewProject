@@ -14,13 +14,20 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "EMP_EMPLOYEE_ID")
     private Long empEmployeeId;
+
     @Column(name = "EMP_EMPLOYEE_NAME")
     private String empEmployeeName;
-//    @OneToMany(mappedBy = "employee")
-//    private List<EmployeeAttendance> employeeAttendance;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "employee")
+    private List<EmployeeAttendance> employeeAttendance;
 //    @OneToMany(mappedBy = "employee")
 //    private List<EmployeePaySlip> employeePaySlips;
 
+    public Employee(Long empEmployeeId, String empEmployeeName, List<EmployeeAttendance> employeeAttendance) {
+        this.empEmployeeId = empEmployeeId;
+        this.empEmployeeName = empEmployeeName;
+        this.employeeAttendance = employeeAttendance;
+    }
 
     public Employee() {
     }
@@ -41,5 +48,11 @@ public class Employee {
         this.empEmployeeName = empEmployeeName;
     }
 
+    public List<EmployeeAttendance> getEmployeeAttendance() {
+        return employeeAttendance;
+    }
 
+    public void setEmployeeAttendance(List<EmployeeAttendance> employeeAttendance) {
+        this.employeeAttendance = employeeAttendance;
+    }
 }

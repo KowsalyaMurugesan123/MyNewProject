@@ -43,11 +43,7 @@ public class EmployeePaySlipServiceImpl implements EmployeePaySlipService {
     @Async  //async call annotation
     @Override
     public CompletableFuture<EmployeePaySlip> generatePayslip(Long employeeId) {
-        if (employeePaySlipRepository.existsById(employeeId)) {
 
-            // Throw an exception or handle the case where a payslip already exists
-            throw new RuntimeException("Payslip already generated for employee with ID: " + employeeId);
-        }
 
         // Fetch employee attendance
         List<EmployeeAttendance> attendanceList = employeeAttendanceRepository.findByEmployeeEmpEmployeeId(employeeId);

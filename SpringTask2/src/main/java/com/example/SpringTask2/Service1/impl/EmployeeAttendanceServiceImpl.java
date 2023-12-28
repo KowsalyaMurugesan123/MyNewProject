@@ -1,6 +1,7 @@
 package com.example.SpringTask2.Service1.impl;
 
 import com.example.SpringTask2.Service1.EmployeeAttendanceService;
+import com.example.SpringTask2.entity.Employee;
 import com.example.SpringTask2.entity.EmployeeAttendance;
 import com.example.SpringTask2.repository.EmployeeAttendanceRepository;
 import com.example.SpringTask2.repository.EmployeeRepository;
@@ -8,6 +9,8 @@ import com.example.SpringTask2.resource.EmployeeAttendanceResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 
 //defining the business logic
@@ -24,14 +27,14 @@ public class EmployeeAttendanceServiceImpl implements EmployeeAttendanceService 
 
     //saving  employeeattendance record by using the method save() of CrudRepository
     @Override
-    public EmployeeAttendance createEmployeeAttendance(EmployeeAttendance employeeAttendance) {
-
+    public EmployeeAttendance createEmployeeAttendance(Long id, EmployeeAttendance employeeAttendance) {
+        Employee employee=getEmployeeById(id);
         //save the employeeattendance
         EmployeeAttendance attendance = new EmployeeAttendance();
         attendance.setEmployeeAttendanceStatus(employeeAttendance.getEmployeeAttendanceStatus());
-        attendance.setEmaCurrentDate(employeeAttendance.getEmaCurrentDate());
+        attendance.setEmaCurrentDate(LocalDate.now());
         attendance.setEmaMonth(employeeAttendance.getEmaMonth());
-        attendance.setEmployee(employeeAttendance.getEmployee());
+        attendance.setEmployee(employee);
 
         return employeeAttendanceRepository.save(attendance);
     }
@@ -64,4 +67,10 @@ public class EmployeeAttendanceServiceImpl implements EmployeeAttendanceService 
 //        return saveattendance;
 //
 //    }
+
+    public Employee getEmployeeById(Long id){
+        Employee employee = employeeRepository.findById(id).get();
+        return employee;
+
+    }
 }

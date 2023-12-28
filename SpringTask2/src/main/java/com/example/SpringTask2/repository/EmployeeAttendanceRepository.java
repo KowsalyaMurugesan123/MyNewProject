@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface EmployeeAttendanceRepository extends JpaRepository<EmployeeAttendance,Long> {
     List<EmployeeAttendance> findByEmployeeEmpEmployeeId(Long empEmployeeId);
+
    // List<EmployeeAttendance> findByEmployeeEmpEmployeeName(Long empEmployeeName);
 
 

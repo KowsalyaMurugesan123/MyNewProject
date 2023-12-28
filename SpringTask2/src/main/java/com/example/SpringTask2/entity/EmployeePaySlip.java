@@ -5,10 +5,12 @@ import java.time.LocalDate;
 
 //mark class as an Entity
 @Entity
+
 //defining class name as Table name
 @Table(name = "EMPLOYEE_PAYSLIP")
 
 public class EmployeePaySlip {
+
     //Defining epsPayslipId id as primary key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +19,16 @@ public class EmployeePaySlip {
 
     @Column(name = "EPS_CREATED_DATE")
     private LocalDate epsCreatedDate;
+
     @Column(name = "EPS_DAYS_PRESENT")
     private long epsDaysPresent;
+
     @Column(name = "EPS_DAILY_SALARY")
     private double epsDailySalary;
 
     @Column(name = "EPS_BASIC_SALARY")
     private double epsBasicSalary;
+
 //    @OneToOne
 //    @JoinColumn(name = "employee_id")
 //    private Employee employee;
