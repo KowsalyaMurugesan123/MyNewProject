@@ -4,6 +4,7 @@ import com.example.SpringTask2.entity.EmployeeAttendance;
 import com.example.SpringTask2.resource.EmployeeAttendanceResource;
 
 public interface EmployeeAttendanceService {
+
     /**
      *
      * @param employeeAttendance :An object of type  representing the details of the employee attendance to be created
@@ -13,5 +14,5 @@ public interface EmployeeAttendanceService {
 
     //public EmployeeAttendance setAttendance(EmployeeAttendance attendance);
 
-   // public EmployeeAttendanceResource createEmployeeAttendance(EmployeeAttendanceResource employeeAttendanceResource);
+    // public EmployeeAttendanceResource createEmployeeAttendance(EmployeeAttendanceResource employeeAttendanceResource);
 }

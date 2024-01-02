@@ -20,6 +20,7 @@ public class Employee {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "employee")
     private List<EmployeeAttendance> employeeAttendance;
+
 //    @OneToMany(mappedBy = "employee")
 //    private List<EmployeePaySlip> employeePaySlips;
 

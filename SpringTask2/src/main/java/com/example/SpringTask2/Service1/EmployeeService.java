@@ -5,6 +5,7 @@ import com.example.SpringTask2.entity.Employee;
 import java.util.concurrent.CompletableFuture;
 
 public interface EmployeeService {
+
     /**
      *
      * @param employee :An object of type  representing the details of the employee to be created
@@ -12,11 +13,13 @@ public interface EmployeeService {
      */
     public Employee createEmployee(Employee employee);
 
+
     /**
      *
      * @param employeeId :A  value representing the unique identifier of the employee for whom the payslip is to be generated
      */
- //   public void generatePayslip(Long employeeId);
+    //   public void generatePayslip(Long employeeId);
+
 
     /**
      *
@@ -24,5 +27,5 @@ public interface EmployeeService {
      * @return           :A CompletableFuture that, when completed, contains the employee with the given ID,
      *  *         or null if no employee is found
      */
-    //public CompletableFuture<Employee> getEmployeeById(Long employeeId);
+    public CompletableFuture<Employee> getEmployeeById(Long employeeId);
 }

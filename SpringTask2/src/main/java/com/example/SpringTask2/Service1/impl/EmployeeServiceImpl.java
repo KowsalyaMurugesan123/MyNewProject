@@ -38,5 +38,10 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(employee);
     }
 
+    @Async //async call
+    @Override
+    public CompletableFuture<Employee> getEmployeeById(Long employeeId) {
+        return CompletableFuture.completedFuture(employeeRepository.findById(employeeId).orElse(null));
+    }
 
 }
